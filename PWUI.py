@@ -8,13 +8,13 @@ import importlib
 import subprocess
 from decimal import Decimal
 import numpy
-#import translators as ts
+import translators as ts
 import importlib
 
-version = "1.32"
+version = "1.34"
 
 st.title("Parrot OCE")
-st.caption(f'''POCE： v{version}        
+st.caption(f'''Parrot Online Code Environment： v{version}        
 python：{sys.version}''')
 
 @st.dialog("Python运行结果",width="large")
@@ -64,16 +64,6 @@ def run(command : list):
     return reback
 
 def format_to_scientific(value, precision=6):
-    """
-    将数字转换为科学计数法表示的字符串，如果输入是字符串则直接返回。
-
-    参数:
-        value: 输入值，可以是数字或字符串。
-        precision (int): 科学计数法中有效数字的位数，默认为6。
-
-    返回:
-        str: 如果输入是数字，则返回科学计数法表示的字符串；如果是字符串，则返回原字符串。
-    """
     if isinstance(value, (int, float)):
         decimal_value = Decimal(str(value))
         return "{:.{}e}".format(decimal_value, precision)
