@@ -11,11 +11,23 @@ import numpy
 #import translators as ts
 import importlib
 
-version = "1.34"
+version = "1.35"
 
 st.title("Parrot OCE")
 st.caption(f'''Parrot Online Code Environment： v{version}        
 python：{sys.version}''')
+
+st.set_page_config(
+    page_title="Parrot OCE",
+    page_icon="🦜",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Github仓库': 'https://github.com/Squirrel963/ParrotOCE',
+        '提交Issues': "https://github.com/Squirrel963/ParrotOCE/issues",
+        '关于': f"# Parrot Online Code Environment v{version}  用于python在线运行、调试  开源许可证：GPL-3.0"
+    }
+)
 
 @st.dialog("Python运行结果",width="large")
 def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
