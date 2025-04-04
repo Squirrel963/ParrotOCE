@@ -8,7 +8,7 @@ import importlib
 import subprocess
 from decimal import Decimal
 import numpy
-import translators as ts
+#import translators as ts
 import importlib
 
 version = "1.32"
