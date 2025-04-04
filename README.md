@@ -71,7 +71,7 @@ python -m streamlit run PWUI.py
 12 import importlib
 ```
 ### Streamlit社区云部署
-由于ParrotOCE已经具有了一个[Streamlit社区云示例](https://parrotoce.streamlit.app)，因此使用Streamlit社区云进行部署几乎是无意义的  
+由于ParrotOCE已经具有了一个[Streamlit社区云示例](https://parrotoce.streamlit.app)，因此使用Streamlit社区云再次进行部署几乎是无意义的  
 如果您坚持要部署，以下为具体步骤：  
 第一步，拉取ParrotOCE仓库分支  
 第二步，访问[Streamlit社区云](https://share.streamlit.io/)，并选择创建应用（Create app）  
