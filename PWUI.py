@@ -11,7 +11,7 @@ import numpy
 #import translators as ts
 import importlib
 
-version = "1.35"
+version = "1.36"
 
 st.title("Parrot OCE")
 st.caption(f'''Parrot Online Code Environment： v{version}        
@@ -23,9 +23,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Github仓库': 'https://github.com/Squirrel963/ParrotOCE',
-        '提交Issues': "https://github.com/Squirrel963/ParrotOCE/issues",
-        '关于': f"# Parrot Online Code Environment v{version}  用于python在线运行、调试  开源许可证：GPL-3.0"
+        'Get Help': 'https://github.com/Squirrel963/ParrotOCE',
+        'Report a bug': "https://github.com/Squirrel963/ParrotOCE/issues",
+        'About': f"# Parrot Online Code Environment v{version}  用于python在线运行、调试  开源许可证：GPL-3.0"
     }
 )
 
