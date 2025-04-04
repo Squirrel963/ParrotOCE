@@ -11,7 +11,7 @@ import numpy
 #import translators as ts
 import importlib
 
-version = "1.39"
+version = "1.40"
 
 st.set_page_config(
     page_title="Parrot OCE",
@@ -227,10 +227,11 @@ with col2:
                         vote(result,allowta=allowth,allowdown=allowth)
                     elif option == "Eval":
                         try:
-                            if eval(code) == True:
-                                vote(":material/check: 成立",types='bool',colors='green',allowta=False,allowdown=False)
-                            elif eval(code) == False:
-                                vote(":material/close: 不成立",types='bool',colors='red',allowta=False,allowdown=False)
+                            if type(eval(code)) == bool:
+                                if eval(code) == True:
+                                    vote(":material/check: 成立",types='bool',colors='green',allowta=False,allowdown=False)
+                                elif eval(code) == False:
+                                    vote(":material/close: 不成立",types='bool',colors='red',allowta=False,allowdown=False)
                             else:
                                 if snf:
                                     vote(format_to_scientific(eval(code)),allowta=True)
