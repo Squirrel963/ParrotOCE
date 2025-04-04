@@ -36,10 +36,10 @@ Parrot Online Code Environment
 [Streamlit社区云部署](#Streamlit社区云部署)  
 
 
-在进行任何一个部署途径前  
+在进行任何一个部署途径前（除了Streamlit社区云部署）  
 您都应该先运行以下命令来确保ParrotOCE能够正常运行：
 ```bash
-pip install streamlit importlib
+pip install streamlit importlib translators
 ```
 注意！streamlit版本最低为`1.44.0`才能满足ParrotOCE正常运行
 
