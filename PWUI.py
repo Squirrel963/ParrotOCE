@@ -11,11 +11,7 @@ import numpy
 #import translators as ts
 import importlib
 
-version = "1.36"
-
-st.title("Parrot OCE")
-st.caption(f'''Parrot Online Code Environment： v{version}        
-python：{sys.version}''')
+version = "1.37"
 
 st.set_page_config(
     page_title="Parrot OCE",
@@ -28,6 +24,10 @@ st.set_page_config(
         'About': f"# Parrot Online Code Environment v{version}  用于python在线运行、调试  开源许可证：GPL-3.0"
     }
 )
+
+st.title("Parrot OCE")
+st.caption(f'''Parrot Online Code Environment： v{version}        
+python：{sys.version}''')
 
 @st.dialog("Python运行结果",width="large")
 def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
