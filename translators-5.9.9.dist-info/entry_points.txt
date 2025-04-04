@@ -1,0 +1,2 @@
+[console_scripts]
+fanyi = translators.cli:translate_cli

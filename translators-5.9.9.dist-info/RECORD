@@ -1,0 +1,15 @@
+../../Scripts/fanyi.exe,sha256=D1lGPz-DKrSiHq8bppPS0__RbMRFqFJwlLPVAE0U_SQ,108474
+translators-5.9.9.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+translators-5.9.9.dist-info/LICENSE,sha256=gcuuhKKc5-dwvyvHsXjlC9oM6N5gZ6umYbC8ewW1Yvg,35821
+translators-5.9.9.dist-info/METADATA,sha256=MCjApeQu2iJRYep7JCOm9ic2Mi-av6jsIsO68zjTi-M,70467
+translators-5.9.9.dist-info/RECORD,,
+translators-5.9.9.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+translators-5.9.9.dist-info/WHEEL,sha256=jB7zZ3N9hIM9adW7qlTAyycLYW9npaWKLRzaoVcLKcM,91
+translators-5.9.9.dist-info/entry_points.txt,sha256=Lg98hCTNhJBxFT15r2zxv8QWOqDw9lSriQcF1k-HPCU,56
+translators-5.9.9.dist-info/top_level.txt,sha256=tKrlw6yMRROIMC1s26laUGbdW-ZaY7qZ9aCV0S8_mss,12
+translators/__init__.py,sha256=ChZk0SOhWNYbYlufBDvS0V5fxmZlbBjtt-Bj5IW_X6I,452
+translators/__pycache__/__init__.cpython-310.pyc,,
+translators/__pycache__/cli.cpython-310.pyc,,
+translators/__pycache__/server.cpython-310.pyc,,
+translators/cli.py,sha256=V4cDVFtqqEVMPoSws8STvWhi0mYs1vBX-2sYBw69d9U,3037
+translators/server.py,sha256=Umor9n_lmIqrQQ48x_-2nsln4B6yDM5UjWxJmj_Y1o8,322793
