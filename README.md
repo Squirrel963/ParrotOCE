@@ -13,7 +13,7 @@ Parrot Online Code Environment
 
 ## 功能概览
 ### 屏幕截图：
-![image](ui.png)
+![ui](ui.png)
 ### 功能说明
 |功能|注释|缺点|
 | ---------- | -----------| -----------|
@@ -57,11 +57,24 @@ cd ParrotOCE/
 ```bash
 python -m streamlit run PWUI.py
 ```
+注意！为保证Streamlit社区云示例能够正常运转，部分代码做了微调   
+如要使用完整的ParrotOCE功能，请修改以下内容：  
+```python
+10 import numpy
+11 #import translators as ts
+12 import importlib
+```
+改为如下
+```python
+10 import numpy
+11 import translators as ts
+12 import importlib
+```
 ### Streamlit社区云部署
 由于ParrotOCE已经具有了一个[Streamlit社区云示例](https://parrotoce.streamlit.app)，因此使用Streamlit社区云进行部署几乎是无意义的  
 如果您坚持要部署，以下为具体步骤：  
 第一步，拉取ParrotOCE仓库分支  
 第二步，访问[Streamlit社区云](https://share.streamlit.io/)，并选择创建应用（Create app）  
 第三步，填写相关配置：
-![image](build_scc.png)  
+![build_scc](build_scc.png)  
 第四步，完成配置并自行进行微调
