@@ -1,9 +1,9 @@
 # ParrotOCE
-Parrot Online Code Environment
+Parrot Online Code Environment  
 鹦鹉在线编程环境  用于python编写与测试  
 ~~更适合中国程序员体质的在线编辑器~~
 
->This project is not supported for other languages, if you can not read Chinese, please use another program
+>This project is not supported for other languages, if you can not read Chinese, please use another program  
 
 注意！
 ```
@@ -58,7 +58,7 @@ cd ParrotOCE/
 python -m streamlit run PWUI.py
 ```
 注意！为保证Streamlit社区云示例能够正常运转，部分代码做了微调   
-如要使用完整的ParrotOCE功能，请修改以下内容：  
+如要使用ParrotOCE的翻译功能，请修改以下内容：  
 ```python
 10 import numpy
 11 #import translators as ts
