@@ -29,8 +29,9 @@ st.set_page_config(
 )
 
 st.title("Parrot OCE")
-st.caption(f'''Parrot Online Code Environment： v{version}        Demo_mode：{Demo_mode}
-Python：{sys.version}''')
+st.caption(f'''Parrot Online Code Environment： v{version}    
+Python：{sys.version}    
+Demo_mode：{Demo_mode}''')
 
 @st.dialog("Python运行结果",width="large")
 def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
