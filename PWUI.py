@@ -29,9 +29,8 @@ st.set_page_config(
 )
 
 st.title("Parrot OCE")
-st.caption(f'''Parrot Online Code Environment： v{version}        
-Python：{sys.version}
-Demo_mode：{Demo_mode}''')
+st.caption(f'''Parrot Online Code Environment： v{version}        Demo_mode：{Demo_mode}
+Python：{sys.version}''')
 
 @st.dialog("Python运行结果",width="large")
 def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
@@ -48,10 +47,10 @@ def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
         elif types == 'bool':
             st.badge(f"{text}",color=colors)
         if allowta:
-            if Demo_mode:
-                st.write("该版本正处于社区演示模式，因此该功能不可用")
-            else:
-                with st.expander("翻译为中文"):
+            with st.expander("翻译为中文"):
+                if Demo_mode:
+                    st.write("该版本正处于社区演示模式，因此该功能不可用")
+                else:
                     if st.button(":material/translate:  立即翻译"):
                         with st.spinner("翻译中..."):
                             translation = translat(f"{text}")
