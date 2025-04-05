@@ -63,18 +63,14 @@ cd ParrotOCE/
 ```bash
 python -m streamlit run PWUI.py
 ```
-注意！为保证Streamlit社区云示例能够正常运转，部分代码做了微调   
-如要使用ParrotOCE的翻译功能，请修改以下内容：  
+注意！为保证Streamlit社区云示例能够正常运转，本仓库的POCE开启了`社区演示模式`   
+如要使用完整的ParrotOCE功能，请修改以下内容来关闭`社区演示模式`：  
 ```python
-10  import numpy
-11  #import translators as ts
-12  import importlib
+1  Demo_mode = True
 ```
 改为如下  
 ```python
-10  import numpy
-11  import translators as ts
-12  import importlib
+1  Demo_mode = False
 ```
 ### Streamlit社区云部署
 由于ParrotOCE已经具有了一个[Streamlit社区云示例](https://parrotoce.streamlit.app)，因此使用Streamlit社区云再次进行部署几乎是无意义的  
