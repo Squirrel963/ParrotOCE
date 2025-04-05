@@ -159,6 +159,7 @@ Unsupported = [
     "Ropen",
     "Rinput",
     "streamlit",
+    "Rst",
     "Radmin_code",
     "Rvote"
 ]
