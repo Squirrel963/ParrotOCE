@@ -1,3 +1,4 @@
+Demo_mode = True
 import streamlit as st
 import time
 import random
@@ -8,27 +9,29 @@ import importlib
 import subprocess
 from decimal import Decimal
 import numpy
-#import translators as ts
+if not Demo_mode:
+    import translators as ts
 import importlib
 
-version = "1.40"
+version = "1.41"
 
 st.set_page_config(
     page_title="Parrot OCE",
     page_icon="🦜",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
     menu_items={
         'Get Help': 'https://github.com/Squirrel963/ParrotOCE',
         'Report a bug': "https://github.com/Squirrel963/ParrotOCE/issues",
         'About': f'''### Parrot Online Code Environment v{version}  
-        用于python在线运行、调试  开源许可证：GPL-3.0'''
+        用于python在线运行、调试    开源许可证：GPL-3.0'''
     }
 )
 
 st.title("Parrot OCE")
 st.caption(f'''Parrot Online Code Environment： v{version}        
-python：{sys.version}''')
+Python：{sys.version}
+Demo_mode：{Demo_mode}''')
 
 @st.dialog("Python运行结果",width="large")
 def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
@@ -45,11 +48,14 @@ def vote(text, allowta:bool, allowdown=True, types='normal', colors="blue"):
         elif types == 'bool':
             st.badge(f"{text}",color=colors)
         if allowta:
-            with st.expander("翻译为中文"):
-                if st.button(":material/translate:  立即翻译"):
-                    with st.spinner("翻译中..."):
-                        translation = translat(f"{text}")
-                        st.write(translation)
+            if Demo_mode:
+                st.write("该版本正处于社区演示模式，因此该功能不可用")
+            else:
+                with st.expander("翻译为中文"):
+                    if st.button(":material/translate:  立即翻译"):
+                        with st.spinner("翻译中..."):
+                            translation = translat(f"{text}")
+                            st.write(translation)
     except ValueError as e:
         st.error(":material/warning:  int数字大小超限!")
 
@@ -156,12 +162,11 @@ Unsupported = [
     "sys",
     "subprocess",
     "importlib",
-    "Ropen()",
-    "Rinput()",
+    "Ropen",
+    "Rinput",
     "streamlit",
-    "Rst.",
     "Radmin_code",
-    "Rvote()"
+    "Rvote"
 ]
 
 col1, col2 = st.columns([0.7,0.3])
@@ -266,34 +271,37 @@ with st.sidebar:
                 except:
                     st.warning(f"模块'{model_name}'未安装")
             elif selection == 1:
-                with st.status("安装模块中...", expanded=True) as status:
-                    st.write("检查模块可用性...")
-                    try:
-                        importlib.import_module(model_name)
-                        st.write("*模块已安装且处于可用状态")
-                        status.update(
-                            label="模块安装成功!", state="complete"
-                        )
-                    except:
-                        st.write("调用pip安装中...")
-                        pipcode = run(["pip","install",model_name])['code']
-                        if pipcode == 0:
-                            st.write("测试模块中...")
-                            try:
-                                importlib.import_module(model_name)
-                                st.write("*模块处于可用状态")
-                                status.update(
-                                    label="模块安装成功!", state="complete"
-                                )
-                            except:
-                                st.write("*模块处于不可用状态")
-                                status.update(
-                                    label=f"模块安装失败", state="error"
-                                )
-                        else:
+                if Demo_mode:
+                    st.write("该版本正处于社区演示模式，因此该功能不可用")
+                else:
+                    with st.status("安装模块中...", expanded=True) as status:
+                        st.write("检查模块可用性...")
+                        try:
+                            importlib.import_module(model_name)
+                            st.write("*模块已安装且处于可用状态")
                             status.update(
-                                label=f"模块安装失败：{pipcode}", state="error"
+                                label="模块安装成功!", state="complete"
                             )
+                        except:
+                            st.write("调用pip安装中...")
+                            pipcode = run(["pip","install",model_name])['code']
+                            if pipcode == 0:
+                                st.write("测试模块中...")
+                                try:
+                                    importlib.import_module(model_name)
+                                    st.write("*模块处于可用状态")
+                                    status.update(
+                                        label="模块安装成功!", state="complete"
+                                    )
+                                except:
+                                    st.write("*模块处于不可用状态")
+                                    status.update(
+                                        label=f"模块安装失败", state="error"
+                                    )
+                            else:
+                                status.update(
+                                    label=f"模块安装失败：{pipcode}", state="error"
+                                )
         else:
             st.error("模块名非法!")
     st.divider()
