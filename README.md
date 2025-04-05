@@ -1,7 +1,11 @@
 # ParrotOCE
 Parrot Online Code Environment  
-鹦鹉在线编程环境  用于python编写与测试  
+鹦鹉在线编程环境  用于随时随地进行python代码编写与测试  
 ~~更适合中国程序员体质的在线编辑器~~
+
+
+[在线体验（无翻译功能）](https://parrotoce.streamlit.app/)
+
 
 >This project is not supported for other languages, if you can not read Chinese, please use another program  
 
