@@ -156,12 +156,12 @@ Unsupported = [
     "sys",
     "subprocess",
     "importlib",
-    "Ropen",
-    "Rinput",
+    "Ropen()",
+    "Rinput()",
     "streamlit",
-    "Rst",
+    "Rst.",
     "Radmin_code",
-    "Rvote"
+    "Rvote()"
 ]
 
 col1, col2 = st.columns([0.7,0.3])
