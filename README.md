@@ -7,7 +7,7 @@ Parrot Online Code Environment
 [在线体验（无翻译功能）](https://parrotoce.streamlit.app/)
 
 
->This project is not supported for other languages, if you can not read Chinese, please use another program  
+>This project does not support languages other than Chinese. If you cannot read Chinese, please use another project  
 
 注意！
 ```
