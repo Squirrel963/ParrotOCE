@@ -41,34 +41,36 @@ Parrot Online Code Environment
 ```bash
 pip install streamlit importlib translators
 ```
-注意！streamlit版本最低为`1.44.0`才能满足ParrotOCE正常运行
+注意！streamlit版本最低为`1.44.0`才能满足ParrotOCE运行
+
+
 
 
 ### 本地部署
-首先clone本仓库：  
+首先clone本仓库：    
 ```bash
 git clone https://github.com/Squirrel963/ParrotOCE.git
 ```
-然后，切换到文件夹：
+然后，切换到文件夹：  
 ```bash
 cd ParrotOCE/
 ```
-最后，使用streamlit启动ParrotOCE：
+最后，使用streamlit启动ParrotOCE：  
 ```bash
 python -m streamlit run PWUI.py
 ```
 注意！为保证Streamlit社区云示例能够正常运转，部分代码做了微调   
 如要使用ParrotOCE的翻译功能，请修改以下内容：  
 ```python
-10 import numpy
-11 #import translators as ts
-12 import importlib
+10  import numpy
+11  #import translators as ts
+12  import importlib
 ```
-改为如下
+改为如下  
 ```python
-10 import numpy
-11 import translators as ts
-12 import importlib
+10  import numpy
+11  import translators as ts
+12  import importlib
 ```
 ### Streamlit社区云部署
 由于ParrotOCE已经具有了一个[Streamlit社区云示例](https://parrotoce.streamlit.app)，因此使用Streamlit社区云再次进行部署几乎是无意义的  
