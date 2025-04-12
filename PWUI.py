@@ -12,8 +12,11 @@ import numpy
 if not Demo_mode:
     import translators as ts
 import importlib
+from streamlit_ace import st_ace
+#from streamlit_extras.jupyterlite import jupyterlite
 
-version = "1.41"
+
+version = "1.50"
 
 st.set_page_config(
     page_title="Parrot OCE",
@@ -171,8 +174,14 @@ Unsupported = [
 
 col1, col2 = st.columns([0.7,0.3])
 with col1:
-    codes = st.text_area(":material/code:  Python代码块",height=400,value='''print("hello POCE!")
-print("I love python3.10!")''')
+    codes = st_ace(language='python',theme='chaos',height=500, font_size=col2.number_input("字体大小", 16, 24, 16),auto_update=True,value='''texts = ["hello POCE!", "I love python3.10!"]
+for i in texts:
+    print(i)''')
+    #jupyterlite(600, 1600)
+
+# Display editor's content as you type
+#st.text_area(":material/code:  Python代码块",height=400,value='''print("hello POCE!")
+#print("I love python3.10!")''')
     st.download_button(
         label=":material/download: 下载代码块",
         data=codes,
@@ -184,69 +193,67 @@ with col2:
     #with st.container(border=True):
         option = st.radio(
         ":material/memory:  运行器",
-        ("POCE内置", "Eval", "WT远程执行"),
+        ("POCE内置", "Eval", "Jupyterlite(未实现)"),
         captions=[
             "用于处理复杂代码",
             "适用于数学及字符串运算",
-            "在远程WT服务器上执行",
+            "使用Jupyterlite沙盒运行（等待实现中）",
         ],
         )
-        if option == "WT远程执行":
-            WT_address = st.text_input("WT服务器地址")
-            WT_password = st.text_input("WT服务器密钥")
-        elif option == "Eval":
+        if option == "Eval":
             snf = st.toggle("结果采用科学计数法")
-        if st.button(":material/build:  运行",use_container_width=True):
-            with st.spinner("运行代码中..."):
-                code = codes
-                result = "没有可用结果输出"
-                allowth = True
-                sp = True
-                found_usp = []
-                for i in Unsupported:
-                        if not 'R' in i:
-                            if f"import {i}" in code:
-                                sp = False
-                                found_usp.append(i)
-                        else:
-                            if i.replace("R","") in code:
-                                sp = False
-                                found_usp.append(i.replace("R",""))
-                if sp:
-                    if option == "POCE内置":
-                        captured_output = StringIO()
-                        original_stdout = sys.stdout
-                        sys.stdout = captured_output
-                        code_to_execute = codes
-                        try:
-                            exec(code_to_execute, globals())
-                            result_vars = locals()
-                        except Exception as e:
-                            result = f"运行错误: {str(e)}"
-                        else:
-                            output = captured_output.getvalue().strip()
-                            result = output or result_vars.get('result', None)
-                        finally:
-                            sys.stdout = original_stdout
-                        if result == "没有可用结果输出":
-                            allowth = False
-                        vote(result,allowta=allowth,allowdown=allowth)
-                    elif option == "Eval":
-                        try:
-                            if type(eval(code)) == bool:
-                                if eval(code) == True:
-                                    vote(":material/check: 成立",types='bool',colors='green',allowta=False,allowdown=False)
-                                elif eval(code) == False:
-                                    vote(":material/close: 不成立",types='bool',colors='red',allowta=False,allowdown=False)
+        if not option == "Jupyterlite":
+            if st.button(":material/build:  运行",use_container_width=True):
+                with st.spinner("运行代码中..."):
+                    code = codes
+                    result = "没有可用结果输出"
+                    allowth = True
+                    sp = True
+                    found_usp = []
+                    for i in Unsupported:
+                            if not 'R' in i:
+                                if f"import {i}" in code:
+                                    sp = False
+                                    found_usp.append(i)
                             else:
-                                if snf:
-                                    vote(format_to_scientific(eval(code)),allowta=True)
+                                if i.replace("R","") in code:
+                                    sp = False
+                                    found_usp.append(i.replace("R",""))
+                    if sp:
+                        if option == "POCE内置":
+                            captured_output = StringIO()
+                            original_stdout = sys.stdout
+                            sys.stdout = captured_output
+                            code_to_execute = codes
+                            try:
+                                exec(code_to_execute, globals())
+                                result_vars = locals()
+                            except Exception as e:
+                                result = f"运行错误: {str(e)}"
+                            else:
+                                output = captured_output.getvalue().strip()
+                                result = output or result_vars.get('result', None)
+                            finally:
+                                sys.stdout = original_stdout
+                            if result == "没有可用结果输出":
+                                allowth = False
+                            vote(result,allowta=allowth,allowdown=allowth)
+                        elif option == "Eval":
+                            try:
+                                if type(eval(code)) == bool:
+                                    if eval(code) == True:
+                                        vote(":material/check: 成立",types='bool',colors='green',allowta=False,allowdown=False)
+                                    elif eval(code) == False:
+                                        vote(":material/close: 不成立",types='bool',colors='red',allowta=False,allowdown=False)
                                 else:
-                                    vote(eval(code),allowta=True)
-                        except:
-                            errors(f'''请检查您的eval函数代码块语法，如想运行复杂代码，请使用POCE内置运行器''')
-                else:
-                    errors(f'''代码块中出现了POCE不支持的库或方法！{found_usp}''')
+                                    if snf:
+                                        vote(format_to_scientific(eval(code)),allowta=True)
+                                    else:
+                                        vote(eval(code),allowta=True)
+                            except:
+                                errors(f'''请检查您的eval函数代码块语法，如想运行复杂代码，请使用POCE内置运行器''')
+                    else:
+                        errors(f'''代码块中出现了POCE不支持的库或方法！{found_usp}''')
                 
 with st.sidebar:
     st.title("模块操作面板")
