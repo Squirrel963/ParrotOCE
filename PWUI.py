@@ -16,7 +16,7 @@ from streamlit_ace import st_ace
 #from streamlit_extras.jupyterlite import jupyterlite
 
 
-version = "1.50"
+version = "1.51"
 
 st.set_page_config(
     page_title="Parrot OCE",
@@ -30,6 +30,16 @@ st.set_page_config(
         用于python在线运行、调试    开源许可证：GPL-3.0'''
     }
 )
+
+caches = ['codes']
+for i in caches:
+    if i not in st.session_state:
+        st.session_state[i] = False
+
+if not st.session_state['codes']:
+    st.session_state['codes'] = '''texts = ["hello POCE!", "I love python3.10!"]
+for i in texts:
+    print(i)'''
 
 st.title("Parrot OCE")
 st.caption(f'''Parrot Online Code Environment： v{version}    
@@ -174,11 +184,9 @@ Unsupported = [
 
 col1, col2 = st.columns([0.7,0.3])
 with col1:
-    codes = st_ace(language='python',theme='chaos',height=500, font_size=col2.number_input("字体大小", 16, 24, 16),auto_update=True,value='''texts = ["hello POCE!", "I love python3.10!"]
-for i in texts:
-    print(i)''')
+    codes = st_ace(language='python',theme='chaos',height=500, font_size=col2.number_input("字体大小", 16, 24, 16),auto_update=True,value=st.session_state['codes'])
     #jupyterlite(600, 1600)
-
+    st.session_state['codes'] = codes
 # Display editor's content as you type
 #st.text_area(":material/code:  Python代码块",height=400,value='''print("hello POCE!")
 #print("I love python3.10!")''')
