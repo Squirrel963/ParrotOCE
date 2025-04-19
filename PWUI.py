@@ -16,7 +16,7 @@ from streamlit_ace import st_ace
 #from streamlit_extras.jupyterlite import jupyterlite
 
 
-version = "1.51"
+version = "1.51 hotfix"
 
 st.set_page_config(
     page_title="Parrot OCE",
@@ -184,7 +184,7 @@ Unsupported = [
 
 col1, col2 = st.columns([0.7,0.3])
 with col1:
-    codes = st_ace(language='python',theme='chaos',height=500, font_size=col2.number_input("字体大小", 16, 24, 16),auto_update=True,value=st.session_state['codes'])
+    codes = st_ace(language='python',theme='chaos',height=500, font_size=col2.number_input("字体大小", 16, 24, 16),auto_update=False,value=st.session_state['codes'],)
     #jupyterlite(600, 1600)
     st.session_state['codes'] = codes
 # Display editor's content as you type
@@ -218,7 +218,8 @@ with col2:
                     allowth = True
                     sp = True
                     found_usp = []
-                    for i in Unsupported:
+                    if not Demo_mode:
+                        for i in Unsupported:
                             if not 'R' in i:
                                 if f"import {i}" in code:
                                     sp = False
