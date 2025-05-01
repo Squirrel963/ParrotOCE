@@ -1,4 +1,4 @@
-Demo_mode = False
+Demo_mode = True
 import streamlit as st
 import time
 import random
